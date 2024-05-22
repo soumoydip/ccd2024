@@ -96,7 +96,13 @@ export function DataTable({ data, columns }: { data: any[]; columns: any }) {
             element?.user?.profile?.last_name
               .toLowerCase()
               .includes(searchQuery.toLowerCase()) ||
-            element?.status?.toLowerCase().includes(searchQuery.toLowerCase())
+            element?.status
+              ?.toLowerCase()
+              .includes(searchQuery.toLowerCase()) ||
+            (
+              "informed".includes(searchQuery.toLowerCase()) &&
+              element?.informed
+            )
         );
       });
     }
